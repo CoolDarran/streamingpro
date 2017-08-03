@@ -32,19 +32,19 @@
 
 
     <repositories>
-        <repository>
-            <id>artima</id>
-            <name>Artima Maven Repository</name>
-            <url>http://repo.artima.com/releases</url>
-        </repository>
-        <repository>
-            <id>cloudera</id>
-            <url>https://repositonry.cloudera.com/artifactory/cloudera-repos/</url>
-        </repository>
-        <repository>
-            <id>pentaho-releases</id>
-            <url>http://repository.pentaho.org/artifactory/repo/</url>
-        </repository>
+        <!--<repository>-->
+            <!--<id>artima</id>-->
+            <!--<name>Artima Maven Repository</name>-->
+            <!--<url>http://repo.artima.com/releases</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>cloudera</id>-->
+            <!--<url>https://repositonry.cloudera.com/artifactory/cloudera-repos/</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>pentaho-releases</id>-->
+            <!--<url>http://repository.pentaho.org/artifactory/repo/</url>-->
+        <!--</repository>-->
     </repositories>
 
     <profiles>
@@ -118,9 +118,9 @@
         </profile>
 
         <profile>
-            <id>spark-1.6.1</id>
+            <id>spark-1.6.2</id>
             <properties>
-                <spark.version>1.6.1</spark.version>
+                <spark.version>1.6.2</spark.version>
                 <spark.streaming.kafka.artifactId>spark-streaming-kafka_${scala.binary.version}
                 </spark.streaming.kafka.artifactId>
                 <spark.sql.kafka.artifactId>spark-streaming-kafka_${scala.binary.version}</spark.sql.kafka.artifactId>
@@ -404,8 +404,8 @@
                 <configuration>
                     <compilerArgument>-g</compilerArgument>
                     <verbose>true</verbose>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
 
             </plugin>
