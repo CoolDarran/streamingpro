@@ -1,0 +1,34 @@
+{
+  "testLocal": {
+    "desc": "测试",
+    "strategy": "local",
+    "algorithm": [],
+    "ref": [],
+    "compositor": [
+      {
+        "name": "streaming.core.compositor.local.source.MockJsonCompositor",
+        "params": [
+          {
+            "a": "3"
+          },
+          {
+            "a": "4"
+          },
+          {
+            "a": "5"
+          }
+        ]
+      },
+      {
+        "name": "streaming.core.compositor.local.output.PrintCompositor",
+        "params": [
+          {
+            "num": 3
+          }
+        ]
+      }
+    ],
+    "configParams": {
+    }
+  }
+}

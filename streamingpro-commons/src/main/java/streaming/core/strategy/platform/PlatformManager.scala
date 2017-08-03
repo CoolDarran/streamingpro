@@ -208,12 +208,15 @@ object PlatformManager {
 
   def FLINK_STREAMING = "flink_streaming"
 
+  def LOCAL = "local"
+
   def platformNameMapping = Map[String, String](
     SPAKR_S_S -> "streaming.core.strategy.platform.SparkStructuredStreamingRuntime",
     SPAKR_STRUCTURED_STREAMING -> "streaming.core.strategy.platform.SparkStructuredStreamingRuntime",
     FLINK_STREAMING -> "streaming.core.strategy.platform.FlinkStreamingRuntime",
     SPAKR_STREAMING -> "streaming.core.strategy.platform.SparkStreamingRuntime",
-    SPARK -> "streaming.core.strategy.platform.SparkRuntime"
+    SPARK -> "streaming.core.strategy.platform.SparkRuntime",
+    LOCAL -> "streaming.core.strategy.platform.LocalRuntime"
   )
 
 }

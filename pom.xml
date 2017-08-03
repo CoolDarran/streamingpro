@@ -118,6 +118,20 @@
         </profile>
 
         <profile>
+            <id>local-exe</id>
+            <modules>
+                <module>streamingpro-localexe</module>
+            </modules>
+            <dependencies>
+                <dependency>
+                    <groupId>net.csdn</groupId>
+                    <artifactId>serviceframework-jetty-9-server</artifactId>
+                    <version>${serviceframework.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
             <id>spark-1.6.2</id>
             <properties>
                 <spark.version>1.6.2</spark.version>

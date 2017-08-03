@@ -12,6 +12,7 @@ class DefaultShortNameMapping extends ShortNameMapping {
     "refTable" -> "streaming.core.strategy.SparkStreamingRefStrategy",
     "refFunction" -> "streaming.core.strategy.SparkStreamingRefStrategy",
     "flink" -> "streaming.core.strategy.SparkStreamingStrategy",
+    "local" -> "streaming.core.strategy.SparkStreamingStrategy",
 
     "sql.udf" -> "streaming.core.compositor.spark.udf.SQLUDFCompositor",
 
