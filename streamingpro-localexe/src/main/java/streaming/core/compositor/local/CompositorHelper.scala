@@ -13,7 +13,7 @@ trait CompositorHelper {
     config(0, name, _configParams)
   }
 
-  def config[T](index: Int, name: String, _configParams: util.List[util.Map[Any, Any]]) = {
+  def config[T](index: Int, name: String, _configParams: util.List[util.Map[Any, Any]]): Option[T] = {
     if (_configParams.size() > 0 && _configParams(0).containsKey(name)) {
       Some(_configParams(index).get(name).asInstanceOf[T])
     } else None

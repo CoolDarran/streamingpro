@@ -16,10 +16,10 @@ class MockJsonCompositor[T] extends Compositor[T] {
 
   private var _configParams: util.List[util.Map[Any, Any]] = _
 
-  val logger = Logger.getLogger(classOf[MockJsonCompositor[T]].getName)
+  val logger: Logger = Logger.getLogger(classOf[MockJsonCompositor[T]].getName)
 
-  def data = {
-    _configParams.map(f => JSONObject.fromObject(f).toString()).toSeq
+  def data: Seq[String] = {
+    _configParams.map(f => JSONObject.fromObject(f).toString())
   }
 
   override def initialize(typeFilters: util.List[String], configParams: util.List[util.Map[Any, Any]]): Unit = {

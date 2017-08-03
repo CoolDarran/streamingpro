@@ -33,7 +33,7 @@ class LocalSpec extends FlatSpec with Matchers {
       try {
         StrategyDispatcher.clear
         PlatformManager.getOrCreate
-        runtime.destroyRuntime(false, true)
+        runtime.destroyRuntime(stopGraceful = false, stopContext = true)
       } catch {
         case e: Exception =>
           e.printStackTrace()
@@ -41,10 +41,10 @@ class LocalSpec extends FlatSpec with Matchers {
     }
   }
 
-  def setupBatchContext(batchParams: Array[String], configFilePath: String) = {
+  def setupBatchContext(batchParams: Array[String], configFilePath: String): LocalRuntime = {
     val extraParam = Array("-streaming.job.file.path", configFilePath)
     val params = new ParamsUtil(batchParams ++ extraParam)
-    PlatformManager.getOrCreate.run(params, false)
+    PlatformManager.getOrCreate.run(params, reRun = false)
     val runtime = PlatformManager.getRuntime.asInstanceOf[LocalRuntime]
     runtime
   }

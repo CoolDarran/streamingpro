@@ -15,7 +15,7 @@ import scala.collection.mutable.ArrayBuffer
 class PrintCompositor[T] extends Compositor[T] with CompositorHelper {
 
   private var _configParams: util.List[util.Map[Any, Any]] = _
-  val logger = Logger.getLogger(classOf[PrintCompositor[T]].getName)
+  val logger: Logger = Logger.getLogger(classOf[PrintCompositor[T]].getName)
 
   override def initialize(typeFilters: util.List[String], configParams: util.List[util.Map[Any, Any]]): Unit = {
     this._configParams = configParams
@@ -23,7 +23,7 @@ class PrintCompositor[T] extends Compositor[T] with CompositorHelper {
 
   val result: util.ArrayList[Any] = new util.ArrayList[Any]()
 
-  def num = {
+  def num: Option[Int] = {
     config[Int]("num", _configParams)
   }
 
