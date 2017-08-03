@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>streamingpro-localexe</artifactId>
+    <artifactId>streamingpro-localexec</artifactId>
     <packaging>jar</packaging>
 
     <name>streamingpro-localexe</name>

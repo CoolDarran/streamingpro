@@ -118,9 +118,9 @@
         </profile>
 
         <profile>
-            <id>local-exe</id>
+            <id>local-exec</id>
             <modules>
-                <module>streamingpro-localexe</module>
+                <module>streamingpro-localexec</module>
             </modules>
             <dependencies>
                 <dependency>
