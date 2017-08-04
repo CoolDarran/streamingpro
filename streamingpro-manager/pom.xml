@@ -102,7 +102,7 @@
         </dependency>
         <dependency>
             <groupId>org.squeryl</groupId>
-            <artifactId>squeryl_2.11</artifactId>
+            <artifactId>squeryl_${scala.binary.version}</artifactId>
             <version>0.9.8</version>
         </dependency>
         <dependency>
