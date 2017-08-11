@@ -1,0 +1,50 @@
+{
+  "batch-es": {
+    "desc": "测试",
+    "strategy": "streaming.core.strategy.SparkStreamingStrategy",
+    "algorithm": [],
+    "ref": [],
+    "compositor": [
+      {
+        "name": "streaming.core.compositor.spark.source.SQLSourceCompositor",
+        "params": [
+          {
+            "format": "org.elasticsearch.spark.sql",
+            "path": "skynet_social_twitter/status_ex1",
+            "es.nodes": "es1",
+            "es.mapping.date.rich": "false",
+            "es.scroll.size": "20",
+            "es.scroll.limit": "20",
+            "es.scroll.keepalive": "10m"
+//            "es.read.field.as.array.include": "mention_users:3,a_keywords,hash_tags,mention_url"
+          }
+        ]
+      },
+      {
+        "name": "streaming.core.compositor.spark.transformation.JSONTableCompositor",
+        "params": [
+          {
+            "tableName": "test"
+          }
+        ]
+      },
+      {
+        "name": "streaming.core.compositor.spark.transformation.SQLCompositor",
+        "params": [
+          {
+            "sql": "select * from test"
+          }
+        ]
+      },
+      {
+        "name": "streaming.core.compositor.spark.output.SQLUnitTestCompositor",
+        "params": [
+          {
+          }
+        ]
+      }
+    ],
+    "configParams": {
+    }
+  }
+}
