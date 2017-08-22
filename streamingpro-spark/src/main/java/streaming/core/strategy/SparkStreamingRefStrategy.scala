@@ -31,7 +31,6 @@ class SparkStreamingRefStrategy[T] extends Strategy[T] with DebugTrait {
     this._compositor = com
     this._processor = alg
     this._configParams = params
-
   }
 
   def result(params: util.Map[Any, Any]): util.List[T] = {

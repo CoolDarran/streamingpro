@@ -48,6 +48,10 @@ class BatchSpec extends BasicStreamingOperation {
 
       result.head.getAs[String]("tp") should be("bbc")
 
+      result.foreach {
+        println
+      }
+
       file.delete()
 
     }
@@ -258,6 +262,64 @@ class BatchSpec extends BasicStreamingOperation {
       fileNum should have size (3)
       file.delete()
 
+    }
+  }
+
+  "batch es" should "run normally" in {
+    withBatchContext(setupBatchContext(batchParams, "classpath:///test/batch-test-es.json")) { runtime: SparkRuntime =>
+      val sd = Dispatcher.dispatcher(null)
+
+      val strategies = sd.findStrategies("batch-es").get
+      strategies.size should be(1)
+
+      val output = strategies.head.compositor.last.asInstanceOf[SQLUnitTestCompositor[Any]]
+      val result = output.result.head
+
+      result.foreach {
+        println
+      }
+    }
+  }
+
+  "batch console local" should "run normally" in {
+    val file = new java.io.File("/tmp/hdfsfile/abc.txt")
+    Files.createParentDirs(file)
+    val obj = new JSONObject()
+    obj.put("a", "yes")
+    obj.put("b", "no")
+    Files.write(obj.toString(), file, Charset.forName("utf-8"))
+
+    withBatchContext(setupBatchContext(batchParams, "classpath:///test/batch-console-local.json")) { runtime: SparkRuntime =>
+
+      val sd = Dispatcher.dispatcher(null)
+      val strategies = sd.findStrategies("batch-console-local").get
+      strategies.size should be(1)
+      file.delete()
+
+    }
+  }
+
+  "batch-join-test.json" should "run normally" in {
+    val file = new java.io.File("/tmp/hdfsfile/abc.txt")
+    Files.createParentDirs(file)
+    Files.write("raw\t3", file, Charset.forName("utf-8"))
+    Files.write("raw\t4", file, Charset.forName("utf-8"))
+
+    withBatchContext(setupBatchContext(batchParams, "classpath:///test/batch-join-test.json")) { runtime: SparkRuntime =>
+      val sd = Dispatcher.dispatcher(null)
+      val strategies = sd.findStrategies("convert_data_parquet").get
+      strategies.size should be (1)
+
+      val output = strategies.head.compositor.last.asInstanceOf[SQLUnitTestCompositor[Any]]
+      val result = output.result.head
+
+      println("tp=>" + result.head.getAs[String]("tp"))
+
+      result.foreach {
+        println
+      }
+
+      file.delete()
     }
   }
 
